@@ -75,19 +75,22 @@ function initNavbar() {
     });
 }
 
-// Form handling and validation
+// Form handling and validation with AJAX
 function initFormHandling() {
     const form = document.querySelector('form[name="contact"]');
     if (!form) return;
 
     form.addEventListener('submit', function(e) {
+        e.preventDefault(); // Always prevent default form submission
+
         // Basic form validation
         const name = form.querySelector('input[name="name"]');
         const email = form.querySelector('input[name="email"]');
         const message = form.querySelector('textarea[name="message"]');
 
-        // Clear previous error states
+        // Clear previous error states and messages
         clearFormErrors();
+        hideFormMessages();
 
         let isValid = true;
 
@@ -111,24 +114,98 @@ function initFormHandling() {
         }
 
         if (!isValid) {
-            e.preventDefault();
             return false;
         }
 
-        // Show loading state
-        const submitButton = form.querySelector('button[type="submit"]');
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<span>⏳</span>Sending...';
-        submitButton.disabled = true;
-
-        // Note: Netlify will handle the actual form submission
-        // We're just providing user feedback here
-        setTimeout(() => {
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
-        }, 2000);
+        // Start AJAX submission
+        handleFormSubmission(form);
     });
 }
+
+// Handle AJAX form submission
+function handleFormSubmission(form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+
+    // Show loading state
+    setFormLoading(submitButton, true);
+
+    // Prepare form data
+    const formData = new FormData(form);
+
+    // Submit via AJAX to Netlify
+    fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(response => {
+        if (response.ok) {
+            showFormSuccess();
+            form.reset(); // Clear the form
+        } else {
+            throw new Error(`Form submission failed with status: ${response.status}`);
+        }
+    })
+    .catch(error => {
+        console.error('Form submission error:', error);
+        showFormError('There was a problem submitting your message. Please try again or contact us directly at support@luispa.dev');
+    })
+    .finally(() => {
+        // Reset button state
+        setFormLoading(submitButton, false, originalText);
+    });
+}
+
+// Set form loading state
+function setFormLoading(button, isLoading, originalText = '') {
+    if (isLoading) {
+        button.innerHTML = '<span class="loading-spinner">⏳</span>Sending...';
+        button.disabled = true;
+        button.style.opacity = '0.7';
+        button.style.cursor = 'not-allowed';
+    } else {
+        button.innerHTML = originalText || '<span>📧</span>Send Message';
+        button.disabled = false;
+        button.style.opacity = '1';
+        button.style.cursor = 'pointer';
+    }
+}
+
+// Show success message
+function showFormSuccess() {
+    const successContainer = document.getElementById('form-success-message');
+    if (successContainer) {
+        successContainer.style.display = 'block';
+        successContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        // Auto-hide after 10 seconds
+        setTimeout(() => {
+            hideFormMessages();
+        }, 10000);
+    }
+}
+
+// Show error message
+function showFormError(errorMessage) {
+    const errorContainer = document.getElementById('form-error-message');
+    const errorText = document.getElementById('form-error-text');
+
+    if (errorContainer && errorText) {
+        errorText.textContent = errorMessage;
+        errorContainer.style.display = 'block';
+        errorContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+}
+
+// Hide form messages (make it globally available)
+window.hideFormMessages = function() {
+    const successContainer = document.getElementById('form-success-message');
+    const errorContainer = document.getElementById('form-error-message');
+
+    if (successContainer) successContainer.style.display = 'none';
+    if (errorContainer) errorContainer.style.display = 'none';
+};
 
 // Form validation helpers
 function showFieldError(field, message) {

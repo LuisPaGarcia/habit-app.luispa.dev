@@ -89,6 +89,28 @@
                         Send Message
                     </button>
                 </form>
+
+                <!-- Success Message -->
+                <div id="form-success-message" class="form-message success-message" style="display: none;">
+                    <div class="message-icon">✅</div>
+                    <div class="message-content">
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for contacting us. We've received your message and will get back to you within 24 hours during business days.</p>
+                        <p class="message-note">You should receive a confirmation email shortly at the address you provided.</p>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="form-error-message" class="form-message error-message" style="display: none;">
+                    <div class="message-icon">❌</div>
+                    <div class="message-content">
+                        <h3>Submission Failed</h3>
+                        <p id="form-error-text">There was a problem submitting your message. Please try again.</p>
+                        <button onclick="hideFormMessages()" class="btn btn-secondary" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                            Try Again
+                        </button>
+                    </div>
+                </div>
             </div>
 
             <!-- FAQ Section -->
