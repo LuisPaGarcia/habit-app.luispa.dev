@@ -1,15 +1,27 @@
 # Redirect rules for Netlify
 
-# Handle SPA routing (if needed in the future)
-/* /index.html 200
+# Force HTTPS - Order matters, most specific first
+# Redirect www subdomain to non-www with HTTPS
+https://www.habit-app.luispa.dev/* https://habit-app.luispa.dev/:splat 301!
+http://www.habit-app.luispa.dev/* https://habit-app.luispa.dev/:splat 301!
 
-# Redirect common paths
-/home /
-/contact /support.html
-
-# Force HTTPS
+# Force HTTPS for main domain
 http://habit-app.luispa.dev/* https://habit-app.luispa.dev/:splat 301!
+
+# Fallback HTTP to HTTPS redirect (catches any other domains)
+http://* https://:splat 301!
+
+# Redirect common paths (ensure HTTPS)
+/home / 301
+/contact /support.html 301
 
 # Handle old paths or common typos
 /support.htm /support.html 301
 /index.htm /index.html 301
+
+# Additional common redirects
+/app /index.html 301
+/download /index.html 301
+
+# Handle SPA routing (if needed in the future) - Must be last
+/* /index.html 200
