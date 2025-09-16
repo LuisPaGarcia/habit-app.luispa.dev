@@ -1,0 +1,15 @@
+# Redirect rules for Netlify
+
+# Handle SPA routing (if needed in the future)
+/* /index.html 200
+
+# Redirect common paths
+/home /
+/contact /support.html
+
+# Force HTTPS
+http://habit-app.luispa.dev/* https://habit-app.luispa.dev/:splat 301!
+
+# Handle old paths or common typos
+/support.htm /support.html 301
+/index.htm /index.html 301
