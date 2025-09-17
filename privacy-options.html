@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Options - Easy Habit Tracker</title>
+    <meta name="description" content="User privacy options for Easy Habit Tracker. Control your data, request deletion, and manage your privacy preferences.">
+    <meta name="keywords" content="privacy options, data control, user rights, Easy Habit Tracker">
+    <meta name="author" content="Luis Garcia">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Privacy Options - Easy Habit Tracker">
+    <meta property="og:description" content="Control your privacy preferences and data for Easy Habit Tracker.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://habit-app.luispa.dev/privacy-options">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <span>🎯</span>
+                Easy Habit Tracker
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#screenshots">Screenshots</a></li>
+                <li><a href="support.html">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="support-hero">
+        <div class="hero-container">
+            <h1>Your Privacy Options</h1>
+            <p class="subtitle">Take control of your data and privacy preferences. We're here to help you manage your information.</p>
+        </div>
+    </section>
+
+    <!-- Privacy Options Content -->
+    <section class="support-content">
+        <div class="container">
+
+            <!-- Quick Actions -->
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title fade-in">Quick Privacy Actions</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto;">
+
+                    <div class="privacy-option-card">
+                        <div class="option-icon">🗑️</div>
+                        <h3>Delete My Data</h3>
+                        <p>Request deletion of any data we may have collected. Since most data is stored locally on your device, you can also delete it directly in the app.</p>
+                        <a href="#data-deletion" class="btn btn-secondary" style="color: var(--primary-color); margin-top: 1rem;">Request Deletion</a>
+                    </div>
+
+                    <div class="privacy-option-card">
+                        <div class="option-icon">📋</div>
+                        <h3>Access My Data</h3>
+                        <p>Request information about what data we have collected. Most of your habit data is stored locally on your device and visible in the app.</p>
+                        <a href="#data-access" class="btn btn-secondary" style="color: var(--primary-color); margin-top: 1rem;">Request Access</a>
+                    </div>
+
+                    <div class="privacy-option-card">
+                        <div class="option-icon">⚙️</div>
+                        <h3>Privacy Settings</h3>
+                        <p>Learn how to control analytics and data sharing directly in your iOS settings and within the Easy Habit Tracker app.</p>
+                        <a href="#privacy-settings" class="btn btn-secondary" style="color: var(--primary-color); margin-top: 1rem;">View Settings</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Data Deletion Request -->
+            <div id="data-deletion" style="margin-bottom: 4rem;">
+                <h2 class="section-title fade-in">Request Data Deletion</h2>
+                <div class="support-form fade-in">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-primary);">Data Deletion Request</h3>
+                    <form name="data-deletion" method="POST" netlify>
+                        <input type="hidden" name="form-name" value="data-deletion">
+                        <div class="form-group">
+                            <label for="deletion-email">Email Address (if you provided one previously) *</label>
+                            <input type="email" id="deletion-email" name="email" placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="deletion-device">Device Information</label>
+                            <input type="text" id="deletion-device" name="device" placeholder="e.g., iPhone 14, iOS 17.2">
+                        </div>
+                        <div class="form-group">
+                            <label for="deletion-reason">Reason for Deletion (Optional)</label>
+                            <select id="deletion-reason" name="reason" style="width: 100%; padding: 1rem; border: 2px solid var(--border); border-radius: 12px; font-size: 1rem; background: white;">
+                                <option value="">Select a reason</option>
+                                <option value="no-longer-using">No longer using the app</option>
+                                <option value="privacy-concerns">Privacy concerns</option>
+                                <option value="data-minimization">Data minimization</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="deletion-details">Additional Details</label>
+                            <textarea id="deletion-details" name="details" placeholder="Please provide any additional information that would help us identify and delete your data. Note: Most of your habit data is stored locally on your device and can be deleted by uninstalling the app."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <span>🗑️</span>
+                            Submit Deletion Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Data Access Request -->
+            <div id="data-access" style="margin-bottom: 4rem;">
+                <h2 class="section-title fade-in">Request Data Access</h2>
+                <div class="support-form fade-in">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-primary);">Data Access Request</h3>
+                    <form name="data-access" method="POST" netlify>
+                        <input type="hidden" name="form-name" value="data-access">
+                        <div class="form-group">
+                            <label for="access-email">Email Address *</label>
+                            <input type="email" id="access-email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="access-device">Device Information</label>
+                            <input type="text" id="access-device" name="device" placeholder="e.g., iPhone 14, iOS 17.2">
+                        </div>
+                        <div class="form-group">
+                            <label for="access-request">What information are you looking for?</label>
+                            <textarea id="access-request" name="request" required placeholder="Please describe what data you would like to access. Note: Your habit data is stored locally on your device and can be viewed directly in the app."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            <span>📋</span>
+                            Submit Access Request
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Privacy Settings Guide -->
+            <div id="privacy-settings" style="margin-bottom: 4rem;">
+                <h2 class="section-title fade-in">Privacy Settings Guide</h2>
+                <div style="max-width: 800px; margin: 0 auto;">
+
+                    <div class="privacy-guide-section">
+                        <h3>📱 In-App Privacy Controls</h3>
+                        <div class="guide-content">
+                            <p><strong>Delete Habit Data:</strong></p>
+                            <ol>
+                                <li>Open Easy Habit Tracker</li>
+                                <li>Go to Settings → Data Management</li>
+                                <li>Select "Delete All Data" or delete individual habits</li>
+                                <li>Confirm the deletion</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="privacy-guide-section">
+                        <h3>⚙️ iOS System Settings</h3>
+                        <div class="guide-content">
+                            <p><strong>Disable Analytics Sharing:</strong></p>
+                            <ol>
+                                <li>Go to iOS Settings → Privacy & Security</li>
+                                <li>Tap "Analytics & Improvements"</li>
+                                <li>Turn off "Share iPhone Analytics"</li>
+                                <li>Turn off "Share iCloud Analytics"</li>
+                            </ol>
+
+                            <p><strong>Control App-Specific Data:</strong></p>
+                            <ol>
+                                <li>Go to iOS Settings → Easy Habit Tracker</li>
+                                <li>Review and adjust any available privacy settings</li>
+                                <li>Disable background app refresh if desired</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="privacy-guide-section">
+                        <h3>☁️ iCloud Settings</h3>
+                        <div class="guide-content">
+                            <p><strong>Control iCloud Sync:</strong></p>
+                            <ol>
+                                <li>Go to iOS Settings → [Your Name] → iCloud</li>
+                                <li>Find "Easy Habit Tracker" in the app list</li>
+                                <li>Toggle off to stop syncing data to iCloud</li>
+                                <li>Choose whether to keep or delete iCloud data</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div style="margin-bottom: 3rem;">
+                <h2 class="section-title fade-in">Need More Help?</h2>
+                <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                    <p style="margin-bottom: 2rem;">If you have questions about your privacy options or need assistance with any of the above, please don't hesitate to contact us.</p>
+
+                    <div style="background: var(--surface); padding: 2rem; border-radius: 16px;">
+                        <h3 style="margin-bottom: 1rem; color: var(--primary-color);">Contact Information</h3>
+                        <p><strong>Email:</strong> <a href="mailto:privacy@luispa.dev" style="color: var(--primary-color);">privacy@luispa.dev</a></p>
+                        <p><strong>General Support:</strong> <a href="support.html" style="color: var(--primary-color);">Contact Support</a></p>
+                        <p><strong>Privacy Policy:</strong> <a href="privacy-policy.html" style="color: var(--primary-color);">Read Full Policy</a></p>
+                        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                            We typically respond to privacy requests within 48 hours.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Important Notes -->
+            <div style="background: var(--light-green); padding: 2rem; border-radius: 16px; border-left: 4px solid var(--primary-color); margin-bottom: 2rem;">
+                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">📝 Important Notes</h3>
+                <ul style="margin: 0; padding-left: 1.5rem;">
+                    <li><strong>Local Data:</strong> Most of your habit data is stored locally on your device. You can delete this data directly in the app or by uninstalling the app.</li>
+                    <li><strong>iCloud Data:</strong> If you use iCloud sync, your data is stored in your personal iCloud account managed by Apple.</li>
+                    <li><strong>Anonymous Data:</strong> Any analytics data we collect is anonymous and cannot be linked back to you personally.</li>
+                    <li><strong>Response Time:</strong> We will respond to all privacy requests within 30 days as required by applicable privacy laws.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Easy Habit Tracker. Made with ❤️ by <a href="https://luispa.dev" target="_blank" style="color: #007AFF; text-decoration: none;">Luis Garcia</a></p>
+            <p style="margin-top: 0.5rem; font-size: 0.9rem;">
+                <a href="privacy-policy.html" style="color: #007AFF; text-decoration: none;">Privacy Policy</a> •
+                <a href="privacy-options.html" style="color: #007AFF; text-decoration: none;">Privacy Options</a> •
+                <a href="support.html" style="color: #007AFF; text-decoration: none;">Support</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+
+    <style>
+        .privacy-option-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: transform 0.3s ease;
+        }
+
+        .privacy-option-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .option-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-option-card h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .privacy-option-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .privacy-guide-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .privacy-guide-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .guide-content p {
+            font-weight: 600;
+            margin: 1.5rem 0 0.5rem 0;
+            color: var(--text-primary);
+        }
+
+        .guide-content ol {
+            margin: 0.5rem 0 1rem 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .guide-content li {
+            margin-bottom: 0.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-option-card {
+                padding: 1.5rem;
+            }
+
+            .privacy-guide-section {
+                padding: 1.5rem;
+            }
+
+            .guide-content ol {
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>
